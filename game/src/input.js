@@ -1,0 +1,1 @@
+export function bindInput(canvas,game){canvas.addEventListener('click',e=>{const r=canvas.getBoundingClientRect();game.click((e.clientX-r.left)*1280/r.width,(e.clientY-r.top)*720/r.height)});window.addEventListener('keydown',e=>{if(e.repeat)return;game.key(e.key)})}

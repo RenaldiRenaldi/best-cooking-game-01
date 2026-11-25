@@ -1,0 +1,3 @@
+let ctx=null,muted=false;
+function tone(freq,dur,type='sine',gain=.035){if(muted)return;if(!ctx)ctx=new (window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator(),g=ctx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(gain,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+dur);o.connect(g).connect(ctx.destination);o.start();o.stop(ctx.currentTime+dur)}
+export const audio={toggle(){muted=!muted;return muted},blip(){tone(520,.08)},sizzle(){tone(145,.22,'sawtooth',.025)},ding(){tone(760,.12);setTimeout(()=>tone(980,.18),80)},error(){tone(110,.18,'square',.04)},serve(){tone(440,.08);setTimeout(()=>tone(660,.16),70)},get muted(){return muted}};
